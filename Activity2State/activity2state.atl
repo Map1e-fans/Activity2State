@@ -5,6 +5,9 @@ create OUT : StateDiagram from IN : ActivityDiagram;
 helper def: ActivityToState(a : ActivityDiagram!Activity) : StateDiagram!State =
     StateDiagram!State.allInstances()->select(s | s.name = a.name)->first();
 
+helper def: FlowEdgeToTransition(f : ActivityDiagram!FlowEdge) : StateDiagram!Transition =
+    StateDiagram!Transition.allInstances()->select(t | t.id = f.id)->first();
+
 -- 辅助函数：解析流程边的源状态
 helper def: resolveSource(f : ActivityDiagram!FlowEdge) : StateDiagram!State =
     thisModule.ActivityToState(f.source);
@@ -98,7 +101,19 @@ rule FlowEdgeToTransition {
         t : StateDiagram!Transition (
             event <- f.label,
 			guard <- f.condition,
+			id <- f.id,
             source <- thisModule.resolveSource(f),
             target <- thisModule.resolveTarget(f)
+        )
+}
+
+rule ActivityDiagramToStateDiagram {
+    from
+        ad : ActivityDiagram!ActivityDiagram
+    to
+        sd : StateDiagram!StateDiagram (
+            name <- ad.name,
+            state <- ad.nodes->collect(n | thisModule.ActivityToState(n)),
+            transition <- ad.edges->collect(e | thisModule.FlowEdgeToTransition(e))
         )
 }

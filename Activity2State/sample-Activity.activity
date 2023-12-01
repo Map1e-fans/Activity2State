@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<activity:ActivityDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:activity="http//com.hath.activity">
+<activity:ActivityDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:activity="http//com.hath.activity" name="act_diagram">
   <nodes xsi:type="activity:Initial" name="start"/>
   <nodes xsi:type="activity:Final" name="end"/>
-  <nodes name="act1"/>
-  <nodes name="act2"/>
+  <nodes xsi:type="activity:Activity" name="act1"/>
+  <nodes xsi:type="activity:Activity" name="act2"/>
   <nodes xsi:type="activity:Decision" name="dec1"/>
-  <nodes name="act3"/>
-  <nodes name="act4"/>
+  <nodes xsi:type="activity:Activity" name="act3"/>
+  <nodes xsi:type="activity:Activity" name="act4"/>
   <nodes xsi:type="activity:Merge" name="merge1"/>
   <nodes xsi:type="activity:Fork" name="fork1"/>
-  <nodes name="act5"/>
-  <nodes name="act6"/>
+  <nodes xsi:type="activity:Activity" name="act5"/>
+  <nodes xsi:type="activity:Activity" name="act6"/>
   <nodes xsi:type="activity:Join" name="join1"/>
-  <edges source="//@nodes.0" target="//@nodes.2"/>
-  <edges source="//@nodes.2" target="//@nodes.3"/>
-  <edges source="//@nodes.3" target="//@nodes.4"/>
-  <edges source="//@nodes.4" target="//@nodes.5" condition="cond2"/>
-  <edges source="//@nodes.4" target="//@nodes.6" condition="cond1"/>
-  <edges source="//@nodes.5" target="//@nodes.8"/>
-  <edges source="//@nodes.6" target="//@nodes.7"/>
-  <edges source="//@nodes.7" target="//@nodes.1"/>
-  <edges source="//@nodes.8" target="//@nodes.9"/>
-  <edges source="//@nodes.8" target="//@nodes.10"/>
-  <edges source="//@nodes.9" target="//@nodes.11"/>
-  <edges source="//@nodes.10" target="//@nodes.11"/>
-  <edges source="//@nodes.11" target="//@nodes.7"/>
+  <edges xsi:type="activity:FlowEdge" source="//@nodes.0" target="//@nodes.2" id="1"/>
+  <edges xsi:type="activity:FlowEdge" source="//@nodes.2" target="//@nodes.3" id="2"/>
+  <edges xsi:type="activity:FlowEdge" source="//@nodes.3" target="//@nodes.4" id="3"/>
+  <edges xsi:type="activity:FlowEdge" source="//@nodes.4" target="//@nodes.5" condition="cond2" id="4"/>
+  <edges xsi:type="activity:FlowEdge" source="//@nodes.4" target="//@nodes.6" condition="cond1" id="5"/>
+  <edges xsi:type="activity:FlowEdge" source="//@nodes.5" target="//@nodes.8" id="6"/>
+  <edges xsi:type="activity:FlowEdge" source="//@nodes.6" target="//@nodes.7" id="7"/>
+  <edges xsi:type="activity:FlowEdge" source="//@nodes.7" target="//@nodes.1" id="8"/>
+  <edges xsi:type="activity:FlowEdge" source="//@nodes.8" target="//@nodes.9" id="9"/>
+  <edges xsi:type="activity:FlowEdge" source="//@nodes.8" target="//@nodes.10" id="10"/>
+  <edges xsi:type="activity:FlowEdge" source="//@nodes.9" target="//@nodes.11" id="11"/>
+  <edges xsi:type="activity:FlowEdge" source="//@nodes.10" target="//@nodes.11" id="12"/>
+  <edges xsi:type="activity:FlowEdge" source="//@nodes.11" target="//@nodes.7" id="13"/>
 </activity:ActivityDiagram>

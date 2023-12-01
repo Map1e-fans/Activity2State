@@ -1,0 +1,46 @@
+[comment encoding = UTF-8 /]
+[module generate('http://com.hath.state')]
+
+
+[template public generateElement(stateDiagram : StateDiagram)]
+[comment @main /]
+[file (stateDiagram.name.concat('.java'), false, 'UTF-8')]
+
+public class [stateDiagram.name/] {
+
+    // Enum for States
+    public enum State {
+        [for (state : State | stateDiagram.state)]
+        [state.name/][if (state <> stateDiagram.state->last())], [/if]
+        [/for]
+    }
+
+    // Current State
+    private State currentState;
+
+    // Constructor
+    public [stateDiagram.name/]() {
+        // Set initial state if exists
+        [if (stateDiagram.state->exists(s | s.oclIsTypeOf(Initial)))]
+        this.currentState = State.[stateDiagram.state->select(s | s.oclIsTypeOf(Initial))->first().name/];
+        [else]
+        this.currentState = State.[stateDiagram.state->first().name/];
+        [/if]
+    }
+
+    // Method to process transitions based on guard conditions
+    public void processEvent(String event) {
+        switch (currentState) {
+            [for (transition : Transition | stateDiagram.transition)]
+            case [transition.source.name/]:
+                if ([transition.guard/].equals(event)) {
+                    currentState = State.[transition.target.name/];
+                    // Transition logic for [transition.source.name/] -> [transition.target.name/]
+                }
+                break;
+            [/for]
+        }
+    }
+}
+[/file]
+[/template]

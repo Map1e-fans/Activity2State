@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:state="http//com.hath.state">
-  <state:State name="act1"/>
-  <state:State name="act2"/>
-  <state:State name="act3"/>
-  <state:State name="act4"/>
-  <state:State name="act5"/>
-  <state:State name="act6"/>
-  <state:Initial name="start"/>
-  <state:Final name="end"/>
-  <state:Choice name="dec1"/>
-  <state:State name="merge1"/>
-  <state:State name="fork1"/>
-  <state:State name="join1"/>
-  <state:Transition source="/6" target="/0"/>
-  <state:Transition source="/0" target="/1"/>
-  <state:Transition source="/1" target="/8"/>
-  <state:Transition source="/8" target="/2" guard="cond2"/>
-  <state:Transition source="/8" target="/3" guard="cond1"/>
-  <state:Transition source="/2" target="/10"/>
-  <state:Transition source="/3" target="/9"/>
-  <state:Transition source="/9" target="/7"/>
-  <state:Transition source="/10" target="/4"/>
-  <state:Transition source="/10" target="/5"/>
-  <state:Transition source="/4" target="/11"/>
-  <state:Transition source="/5" target="/11"/>
-  <state:Transition source="/11" target="/9"/>
-</xmi:XMI>
+<state:StateDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:state="http://com.hath.state" name="act_diagram">
+  <state xsi:type="state:Initial" name="start"/>
+  <state xsi:type="state:Final" name="end"/>
+  <state name="act1"/>
+  <state name="act2"/>
+  <state xsi:type="state:Choice" name="dec1"/>
+  <state name="act3"/>
+  <state name="act4"/>
+  <state name="merge1"/>
+  <state name="fork1"/>
+  <state name="act5"/>
+  <state name="act6"/>
+  <state name="join1"/>
+  <transition source="//@state.0" target="//@state.2" id="1"/>
+  <transition source="//@state.2" target="//@state.3" id="2"/>
+  <transition source="//@state.3" target="//@state.4" id="3"/>
+  <transition source="//@state.4" target="//@state.5" guard="cond2" id="4"/>
+  <transition source="//@state.4" target="//@state.6" guard="cond1" id="5"/>
+  <transition source="//@state.5" target="//@state.8" id="6"/>
+  <transition source="//@state.6" target="//@state.7" id="7"/>
+  <transition source="//@state.7" target="//@state.1" id="8"/>
+  <transition source="//@state.8" target="//@state.9" id="9"/>
+  <transition source="//@state.8" target="//@state.10" id="10"/>
+  <transition source="//@state.9" target="//@state.11" id="11"/>
+  <transition source="//@state.10" target="//@state.11" id="12"/>
+  <transition source="//@state.11" target="//@state.7" id="13"/>
+</state:StateDiagram>

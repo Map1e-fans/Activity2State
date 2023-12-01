@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/lab04/src" modelPluginID="lab04" modelName="Activity2state"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="17.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>../../Activity2State/Activity.ecore</foreignModel>
+  <foreignModel>../../Activity2State/State.ecore</foreignModel>
+  <genPackages prefix="Activity" disposableProviderFactory="true" ecorePackage="Activity.ecore#/">
+    <genClasses ecoreClass="Activity.ecore#//Activity"/>
+    <genClasses ecoreClass="Activity.ecore#//FlowEdge">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Activity.ecore#//FlowEdge/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Activity.ecore#//FlowEdge/target"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Activity.ecore#//FlowEdge/label"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Activity.ecore#//FlowEdge/condition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Activity.ecore#//FlowEdge/id"/>
+    </genClasses>
+    <genClasses ecoreClass="Activity.ecore#//Initial"/>
+    <genClasses ecoreClass="Activity.ecore#//Final"/>
+    <genClasses ecoreClass="Activity.ecore#//Decision"/>
+    <genClasses ecoreClass="Activity.ecore#//Merge"/>
+    <genClasses ecoreClass="Activity.ecore#//Fork"/>
+    <genClasses ecoreClass="Activity.ecore#//Join"/>
+    <genClasses ecoreClass="Activity.ecore#//ActivityDiagram">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Activity.ecore#//ActivityDiagram/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Activity.ecore#//ActivityDiagram/nodes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Activity.ecore#//ActivityDiagram/edges"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Activity.ecore#//Node">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Activity.ecore#//Node/name"/>
+    </genClasses>
+  </genPackages>
+  <genPackages prefix="State" disposableProviderFactory="true" ecorePackage="State.ecore#/">
+    <genClasses ecoreClass="State.ecore#//State">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute State.ecore#//State/name"/>
+    </genClasses>
+    <genClasses ecoreClass="State.ecore#//Initial"/>
+    <genClasses ecoreClass="State.ecore#//Final"/>
+    <genClasses ecoreClass="State.ecore#//Choice"/>
+    <genClasses ecoreClass="State.ecore#//Transition">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference State.ecore#//Transition/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference State.ecore#//Transition/target"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute State.ecore#//Transition/guard"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute State.ecore#//Transition/id"/>
+    </genClasses>
+    <genClasses ecoreClass="State.ecore#//StateDiagram">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference State.ecore#//StateDiagram/state"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference State.ecore#//StateDiagram/transition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute State.ecore#//StateDiagram/name"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<state:StateDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:state="http://com.hath.state" name="test_diagram">
+  <state name="act1"/>
+  <state name="act2"/>
+  <state name="act3"/>
+  <state name="act4"/>
+  <state name="act5"/>
+  <state name="act6"/>
+  <state xsi:type="state:Initial" name="start"/>
+  <state xsi:type="state:Final" name="end"/>
+  <state xsi:type="state:Choice" name="dec1"/>
+  <state name="merge1"/>
+  <state name="fork1"/>
+  <state name="join1"/>
+  <transition source="//@state.6" target="//@state.0"/>
+  <transition source="//@state.0" target="//@state.1"/>
+  <transition source="//@state.1" target="//@state.8"/>
+  <transition source="//@state.8" target="//@state.2" guard="cond2"/>
+  <transition source="//@state.8" target="//@state.3" guard="cond1"/>
+  <transition source="//@state.2" target="//@state.10"/>
+  <transition source="//@state.3" target="//@state.9"/>
+  <transition source="//@state.9" target="//@state.7"/>
+  <transition source="//@state.10" target="//@state.4"/>
+  <transition source="//@state.10" target="//@state.5"/>
+  <transition source="//@state.4" target="//@state.11"/>
+  <transition source="//@state.5" target="//@state.11"/>
+  <transition source="//@state.11" target="//@state.9"/>
+</state:StateDiagram>
