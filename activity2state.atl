@@ -1,0 +1,104 @@
+module ActivityToState;
+create OUT : StateDiagram from IN : ActivityDiagram;
+
+-- 辅助函数：将活动节点转换为状态
+helper def: ActivityToState(a : ActivityDiagram!Activity) : StateDiagram!State =
+    StateDiagram!State.allInstances()->select(s | s.name = a.name)->first();
+
+-- 辅助函数：解析流程边的源状态
+helper def: resolveSource(f : ActivityDiagram!FlowEdge) : StateDiagram!State =
+    thisModule.ActivityToState(f.source);
+
+-- 辅助函数：解析流程边的目标状态
+helper def: resolveTarget(f : ActivityDiagram!FlowEdge) : StateDiagram!State =
+	thisModule.ActivityToState(f.target);
+
+-- 活动节点转换为状态
+rule ActivityToState {
+    from
+        a : ActivityDiagram!Activity (
+            not a.oclIsTypeOf(ActivityDiagram!Initial) and
+            not a.oclIsTypeOf(ActivityDiagram!Final) and
+            not a.oclIsTypeOf(ActivityDiagram!Decision) and
+            not a.oclIsTypeOf(ActivityDiagram!Merge) and
+            not a.oclIsTypeOf(ActivityDiagram!Fork) and
+            not a.oclIsTypeOf(ActivityDiagram!Join)
+        )
+    to
+        s : StateDiagram!State (
+            name <- a.name
+        )
+}
+
+-- 初始节点转换为初始状态
+rule InitialToInitialState {
+  from
+    i : ActivityDiagram!Initial
+  to
+    s : StateDiagram!Initial (
+      name <- i.name
+    )
+}
+
+-- 结束节点转换为结束状态
+rule FinalToFinalState {
+  from
+    f : ActivityDiagram!Final
+  to
+    s : StateDiagram!Final (
+      name <- f.name
+    )
+}
+
+-- 决策节点转换为选择状态
+rule DecisionToChoiceState {
+  from
+    d : ActivityDiagram!Decision
+  to
+    cs : StateDiagram!Choice (
+	  name <- d.name
+    )
+}
+
+-- 合并节点转换为状态
+rule MergeToState {
+  from
+    m : ActivityDiagram!Merge
+  to
+    s : StateDiagram!State (
+      name <- m.name
+    )
+}
+
+-- 分支节点（Fork）转换为状态
+rule ForkToState {
+  from
+    f : ActivityDiagram!Fork
+  to
+    s : StateDiagram!State (
+      name <- f.name
+    )
+}
+
+-- 汇合节点（Join）转换为状态
+rule JoinToState {
+  from
+    j : ActivityDiagram!Join
+  to
+    s : StateDiagram!State (
+      name <- j.name
+    )
+}
+
+-- 流程边转换为转换
+rule FlowEdgeToTransition {
+    from
+        f : ActivityDiagram!FlowEdge
+    to
+        t : StateDiagram!Transition (
+            event <- f.label,
+			guard <- f.condition,
+            source <- thisModule.resolveSource(f),
+            target <- thisModule.resolveTarget(f)
+        )
+}
