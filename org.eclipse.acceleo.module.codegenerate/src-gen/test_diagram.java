@@ -1,4 +1,3 @@
-
 public class test_diagram {
 
     // Enum for States
@@ -30,83 +29,50 @@ public class test_diagram {
     public void processEvent(String event) {
         switch (currentState) {
             case start:
-                if (.equals(event)) {
-                    currentState = State.act1;
-                    // Transition logic for start -> act1
-                }
-                break;
+				currentState = State.act1;
+				break;
             case act1:
-                if (.equals(event)) {
-                    currentState = State.act2;
-                    // Transition logic for act1 -> act2
-                }
-                break;
+				currentState = State.act2;
+				break;
             case act2:
-                if (.equals(event)) {
-                    currentState = State.dec1;
-                    // Transition logic for act2 -> dec1
-                }
-                break;
+				currentState = State.dec1;
+				break;
             case dec1:
-                if (cond2.equals(event)) {
-                    currentState = State.act3;
-                    // Transition logic for dec1 -> act3
+				if ("cond2".equals(event)) {
+	                currentState = State.act3;
+	                // Transition logic for dec1 -> act3
+					break;
                 }
-                break;
             case dec1:
-                if (cond1.equals(event)) {
-                    currentState = State.act4;
-                    // Transition logic for dec1 -> act4
+				if ("cond1".equals(event)) {
+	                currentState = State.act4;
+	                // Transition logic for dec1 -> act4
+					break;
                 }
-                break;
             case act3:
-                if (.equals(event)) {
-                    currentState = State.fork1;
-                    // Transition logic for act3 -> fork1
-                }
-                break;
+				currentState = State.fork1;
+				break;
             case act4:
-                if (.equals(event)) {
-                    currentState = State.merge1;
-                    // Transition logic for act4 -> merge1
-                }
-                break;
+				currentState = State.merge1;
+				break;
             case merge1:
-                if (.equals(event)) {
-                    currentState = State.end;
-                    // Transition logic for merge1 -> end
-                }
-                break;
+				currentState = State.end;
+				break;
             case fork1:
-                if (.equals(event)) {
-                    currentState = State.act5;
-                    // Transition logic for fork1 -> act5
-                }
-                break;
+				currentState = State.act5;
+				break;
             case fork1:
-                if (.equals(event)) {
-                    currentState = State.act6;
-                    // Transition logic for fork1 -> act6
-                }
-                break;
+				currentState = State.act6;
+				break;
             case act5:
-                if (.equals(event)) {
-                    currentState = State.join1;
-                    // Transition logic for act5 -> join1
-                }
-                break;
+				currentState = State.join1;
+				break;
             case act6:
-                if (.equals(event)) {
-                    currentState = State.join1;
-                    // Transition logic for act6 -> join1
-                }
-                break;
+				currentState = State.join1;
+				break;
             case join1:
-                if (.equals(event)) {
-                    currentState = State.merge1;
-                    // Transition logic for join1 -> merge1
-                }
-                break;
+				currentState = State.merge1;
+				break;
         }
     }
 }

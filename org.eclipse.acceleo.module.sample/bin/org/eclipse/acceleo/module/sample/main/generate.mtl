@@ -33,11 +33,16 @@ public class [stateDiagram.name/] {
         switch (currentState) {
             [for (transition : Transition | stateDiagram.transition)]
             case [transition.source.name/]:
-                if ([transition.guard/].equals(event)) {
-                    currentState = State.[transition.target.name/];
-                    // Transition logic for [transition.source.name/] -> [transition.target.name/]
+				[if (transition.guard->isEmpty() = false)]
+				if ("[transition.guard/]".equals(event)) {
+	                currentState = State.[transition.target.name/];
+	                // Transition logic for [transition.source.name/] -> [transition.target.name/]
+					break;
                 }
-                break;
+				[else]
+				currentState = State.[transition.target.name/];
+				break;
+				[/if]
             [/for]
         }
     }

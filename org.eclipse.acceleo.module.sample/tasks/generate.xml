@@ -20,7 +20,7 @@
         <pathelement location="${ECLIPSE_HOME}/plugins/org.osgi.service.prefs_1.1.2.202109301733.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.core.contenttype_3.9.100.v20230630-1232.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.equinox.app_1.6.300.v20230630-1303.jar"/>
-        <pathelement location="${ECLIPSE_HOME}/eclipse-workspace/lab04/bin"/>
+        <pathelement location="${ECLIPSE_HOME}/eclipse-workspace/lab04/lab04/bin"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.emf.ecore_2.35.0.v20230829-0934.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.emf.common_2.29.0.v20230916-0637.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.emf.ecore.xmi_2.36.0.v20231002-1156.jar"/>
